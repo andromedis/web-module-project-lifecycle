@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import UserCard from './components/UserCard';
+
 class App extends React.Component {
   state = {
     userData: {},
@@ -22,7 +24,7 @@ class App extends React.Component {
 
   render() {
     return <div>
-
+      <UserCard userData={this.state.userData}/>
     </div>
   }
 }
