@@ -20,9 +20,9 @@ class UserCard extends React.Component {
       <div className='card-info'>
         <h3 className='name'>{this.props.userData.name}</h3>
         <p className='username'>{this.props.userData.login}</p>
-        <p>Location: {this.props.userData.location}</p>
-        <p>Profile: 
-          <a href={this.props.userData['html_url']}>{this.props.userData['html_url']}</a>
+        <p>Location: {this.props.userData.location || 'none'}</p>
+        <p>Profile: <a 
+          href={this.props.userData['html_url']}>{this.props.userData['html_url']}</a>
         </p>
         <p>Followers: {this.props.userData.followers}</p>
         <button 
@@ -30,17 +30,20 @@ class UserCard extends React.Component {
           >{this.state.followersHidden ? 'Show' : 'Hide'} Followers
         </button>
         {
-          !this.state.followersHidden && 
-          <ul className='followers'>
-            {
-              this.props.followers.map(follower => {
-                return <li key={follower.id}><a href={follower['html_url']}>{follower.login}</a></li>
-              })
-            }
-          </ul>
+          !this.state.followersHidden && (
+            this.props.followers.length
+            ? <ul className='followers'>
+                {
+                  this.props.followers.map(follower => {
+                    return <li key={follower.id}><a href={follower['html_url']}>{follower.login}</a></li>
+                  })
+                }
+              </ul> 
+            : <p>No followers to show</p> 
+          )
         }
         <p>Following: {this.props.userData.following}</p>
-        <p>Bio: {this.props.userData.bio}</p>
+        <p>Bio: {this.props.userData.bio || 'none'}</p>
       </div>
     </div>
   }
