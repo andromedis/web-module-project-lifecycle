@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import Container from '@material-ui/core/Container';
+
 import UserCard from './components/UserCard';
 
 class App extends React.Component {
@@ -10,7 +12,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('https://api.github.com/users/andromedis')
+    axios.get('https://api.github.com/users/luishrd')
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -21,7 +23,7 @@ class App extends React.Component {
         console.error(err);
       });
 
-    axios.get('https://api.github.com/users/andromedis/followers')
+    axios.get('https://api.github.com/users/luishrd/followers')
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -34,9 +36,9 @@ class App extends React.Component {
   }
 
   render() {
-    return <div>
+    return <Container maxWidth='sm'>
       <UserCard userData={this.state.userData} followers={this.state.followers}/>
-    </div>
+    </Container>
   }
 }
 
