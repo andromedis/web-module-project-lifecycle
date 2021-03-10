@@ -12,7 +12,7 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    axios.get('https://api.github.com/users/luishrd')
+    axios.get('https://api.github.com/users/andromedis')
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -23,7 +23,7 @@ class App extends React.Component {
         console.error(err);
       });
 
-    axios.get('https://api.github.com/users/luishrd/followers')
+    axios.get('https://api.github.com/users/andromedis/followers')
       .then(res => {
         console.log(res.data);
         this.setState({
