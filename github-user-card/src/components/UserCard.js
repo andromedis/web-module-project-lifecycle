@@ -41,12 +41,12 @@ class UserCard extends React.Component {
         />}
         title={
           <Typography variant='h4'>
-          {this.props.userData.name}
+          {this.props.userData.name ? this.props.userData.name : this.props.userData.login}
           </Typography>
         }
         subheader={
           <Typography variant='h5'>
-            {this.props.userData.login}
+            {this.props.userData.name ? this.props.userData.login : ''}
           </Typography>
         }
       />
